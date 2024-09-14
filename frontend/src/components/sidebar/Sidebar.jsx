@@ -7,7 +7,7 @@ const Sidebar = () => {
     <div className="border-r border-slate-500 p-4 flex flex-col">
       <div className="w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0">
         <SearchInput />
-        <div className="divider px-3"></div>
+        <div className="divider px-3 "></div>
         <Conversations />
         <LogoutButton />{" "}
       </div>
