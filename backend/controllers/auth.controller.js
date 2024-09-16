@@ -52,17 +52,20 @@ export async function login(req, res) {
   try {
     const { username, password } = req.body;
     const userExists = await User.findOne({ username });
+    if (!userExists) {
+      return res.status(400).json({ error: "Invalid credentials" });
+    }
+
     const passwordOk = await bcryptjs.compare(
       password,
       userExists?.password || ""
     );
-    if (!userExists || !passwordOk) {
-      return res
-        .status(400)
-        .json({ success: false, error: "Invalid credentials" });
+    if (!passwordOk) {
+      return res.status(400).json({ error: "Invalid credentials" });
     }
 
     generateTokenAndSetCookie(userExists._id, res);
+
     res.status(200).json({
       success: true,
       message: "Logged in successfully",

@@ -30,6 +30,7 @@ export default [
       ...reactHooks.configs.recommended.rules,
       "react/prop-types": "off",
       "react/jsx-no-target-blank": "off",
+      "eslint-disable-next-line": "react-refresh/only-export-components",
       "react-refresh/only-export-components": [
         "warn",
         { allowConstantExport: true },

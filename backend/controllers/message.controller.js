@@ -32,25 +32,40 @@ export async function sendMessage(req, res) {
     res.status(200).json({ newMessage });
   } catch (error) {
     console.log("error in sendmessage controller : ", error);
-    res.status(500).json({ success: false, error: "Internal Sever Error" });
+    res.status(500).json({ error: "Internal Sever Error" });
   }
 }
 
 export async function getMessage(req, res) {
+  // try {
+  //   const { id: userToChatId } = req.params;
+  //   const senderId = req.user._id;
+  //   const conversation = await Conversation.findOne({
+  //     participants: { $all: [senderId, userToChatId] },
+  //   }).populate("messages");
+
+  //   if (!conversation) {
+  //     return res.status(200).json([]);
+  //   }
+  //   const messages = conversation.messages;
+  //   res.status(200).json({ messages });
+  // } catch (error) {
+  //   console.log("error in getMessage controller : ", error);
+  //   res.status(500).json({ success: false, error: "Internal Server Error" });
+  // }
   try {
     const { id: userToChatId } = req.params;
     const senderId = req.user._id;
+
     const conversation = await Conversation.findOne({
       participants: { $all: [senderId, userToChatId] },
     }).populate("messages");
 
-    if (!conversation) {
-      return res.status(200).json([]);
-    }
+    if (!conversation) return res.status(200).json([]);
     const messages = conversation.messages;
     res.status(200).json(messages);
   } catch (error) {
-    console.log("error in getMessage controller : ", error);
-    res.status(500).json({ success: false, error: "Internal Server Error" });
+    console.log("Error in getMessages controller: ", error.message);
+    res.status(500).json({ error: "Internal server error" });
   }
 }

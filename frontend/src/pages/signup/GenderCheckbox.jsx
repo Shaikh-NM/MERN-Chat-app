@@ -16,6 +16,7 @@ const GenderCheckbox = ({ handleCheckboxChange, selectedGender }) => {
           />
         </label>
       </div>
+
       <div className="form-control">
         <label
           className={`label gap-2 cursor-pointer ${
