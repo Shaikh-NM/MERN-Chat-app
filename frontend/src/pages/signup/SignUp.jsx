@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import GenderCheckbox from "./GenderCheckbox";
 import { useState } from "react";
-import useSignup from "../../hooks/useSignUp";
+import useSignUp from "../../hooks/useSignUp";
 
 const SignUp = () => {
   const [input, setInput] = useState({
@@ -12,7 +12,7 @@ const SignUp = () => {
     gender: "",
   });
 
-  const { loading, signup } = useSignup();
+  const { loading, signup } = useSignUp();
   const handleCheckboxChange = (gender) => {
     setInput({ ...input, gender });
   };
