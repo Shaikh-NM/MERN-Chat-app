@@ -34,3 +34,6 @@ git push -u origin main
 git remote add origin https://github.com/Shaikh-NM/MERN-Chat-app.git
 git branch -M main
 git push -u origin main
+
+
+// add the sound file 4 22 50
