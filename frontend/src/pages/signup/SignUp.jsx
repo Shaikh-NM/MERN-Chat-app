@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import GenderCheckbox from "./GenderCheckbox";
 import { useState } from "react";
 import useSignUp from "../../hooks/useSignUp.js";
-
+// the bug was here
 const SignUp = () => {
   const [input, setInput] = useState({
     fullname: "",
